@@ -26,16 +26,18 @@
     "pug": "^3.0.3",
     "swiper": "^11.2.10",
     "vue": "^3.5.17",
-    "vue-router": "^4.5.1",
-    "vue-star-rating": "^1.7.0"
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "@types/aos": "^3.0.7",
     "@types/node": "^24.0.15",
+    "@types/vue": "^1.0.31",
+    "@types/web-bluetooth": "^0.0.21",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
     "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/compiler-sfc": "^3.5.17",
     "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.21",

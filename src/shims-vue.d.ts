@@ -1,5 +1,14 @@
-declare module "*.vue" {
-  import { DefineComponent } from "vue";
-  const component: DefineComponent<{}, {}, any>;
-  export default component;
+// src/types/shims-jsx.d.ts
+import { VNode } from 'vue'
+
+declare global {
+  namespace JSX {
+    interface Element extends VNode {}
+    interface ElementClass {
+      $props: any
+    }
+    interface IntrinsicElements {
+      [elem: string]: any
+    }
+  }
 }
