@@ -6,7 +6,7 @@ div(class="h-20")
      Bars3Icon(class="w-6 h-6 text-gray-500 cursor-pointer lg:hidden font-extrabold" v-if="!isMenuOpen" @click="toggleMenu")
      Bars2Icon(class="w-6 h-6 text-gray-500 cursor-pointer lg:hidden font-extrabold" v-if="isMenuOpen" @click="toggleMenu")
     router-link(to="/" class="font-extrabold text-black text-2xl md:text-1xl ") SHOP.CO
-    div(class="hidden lg:flex  justify-center items-center  gap-10  sm:text-sm") 
+    div(class="hidden lg:flex md:flex  justify-center items-center  gap-10  sm:text-sm") 
      router-link(to="/about" class="text-lg font-medium") Apout
      router-link(to="/contact" class="text-lg font-medium") Conact
      router-link(to="/products" class="text-lg font-medium") Products
