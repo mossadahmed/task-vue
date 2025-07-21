@@ -24,7 +24,7 @@ div(class="h-20")
       p(:class="[cartStore.cartItem == 0 ? 'hidden' : 'flex absolute bg-black text-white hover:bg-white hover:text-black w-5 px-1.5 rounded-[100%] text-sm ring-1 left-3 bottom-3 ']") {{ cartStore.cartItem.length }}
      UserCircleIcon(class="w-6 h-6 text-gray-500 font-extrabold")
       
-div(v-if="isMenuOpen" class="fixed inset-0 z-50 md:hidden"
+div(v-if="isMenuOpen" class="fixed inset-0 z-50 "
  
 )
  div(
