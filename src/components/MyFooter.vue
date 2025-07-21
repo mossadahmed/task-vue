@@ -1,5 +1,5 @@
 <template lang="pug">
-div(class="flex flex-col min-h-screen bg-gray-300 mt-26" data-aos="fade-up")
+div(class="flex flex-col h-fit bg-gray-300 mt-26" data-aos="fade-up")
   main(class="flex-grow relative py-16")
    div(class="bg-black p-7 w-4/5 mx-auto rounded-2xl relative z-10 mt-[-130px]")
      h1(class="lg:text-4xl text-2xl mb-5  font-extrabold text-white") STAY UPTO DATE ABOUT OUR LATEST OFFERS

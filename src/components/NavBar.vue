@@ -27,20 +27,20 @@ div(class="h-20")
 div(v-if="isMenuOpen" class="fixed inset-0 z-50 md:hidden"
  
 )
+ div(
+  class="absolute inset-0 bg-black/40 backdrop-blur-sm"
+  @click="toggleMenu"
+)
 
   div(
-    class="absolute inset-0 bg-black/40 backdrop-blur-sm"
-    @click="toggleMenu"
-  )
-
-  div(
-    data-aos="fade-right"  data-aos-duration="1000"
-    class="absolute top-0 left-0 w-64 h-full text-start bg-white p-6 flex flex-col gap-10 shadow-lg transition-all duration-300 transform translate-x-0 ease-in-out" 
-  )
-    router-link(to="/" class="font-extrabold text-black text-2xl md:text-1xl ") SHOP.CO
-    router-link(to="/apout" class="text-lg font-medium" @click="toggleMenu") Apout
-    router-link(to="/aontect" class="text-lg font-medium" @click="toggleMenu") Conact
-    router-link(to="/products" class="text-lg font-medium" @click="toggleMenu") Products
+  data-aos="fade-right"  
+  data-aos-duration="1000"
+  class="absolute top-0 left-0 w-64 h-full text-start bg-white p-6 flex flex-col gap-10 shadow-lg transition-all duration-300 transform translate-x-0 ease-in-out"
+)
+   router-link(to="/" class="font-extrabold text-black text-2xl md:text-1xl" @click="toggleMenu") SHOP.CO
+   router-link(to="/about" class="text-lg font-medium" @click="toggleMenu") About
+   router-link(to="/contact" class="text-lg font-medium" @click="toggleMenu") Contact
+   router-link(to="/products" class="text-lg font-medium" @click="toggleMenu") Products
 
 div( v-if="isSerch" data-aos="fade-down"  data-aos-duration="1000"
     class=" relative top-0 left-0  w-full ba bg-white p-6 flex flex-col gap-6 shadow-lg transition-all duration-300 transform translate-y-0 ease-in-out" 
