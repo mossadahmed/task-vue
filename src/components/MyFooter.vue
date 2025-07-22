@@ -15,7 +15,7 @@ div(class="flex flex-col h-fit bg-gray-300 mt-26" data-aos="fade-up")
    FooterInfo
   hr(class="text-gray-400 w-4/5 p-4 m-auto mt-5")
   div(class="lg:flex lg:justify-between items-center") 
-  h1(class="text-gray-500") Shop.co © 2000-2023, All Rights Reserved
+  h1(class="text-gray-500") Shop.co © 2000-2025, All Rights Reserved
   div(class="flex justify-center mt-5")
    div(v-for="(image , i) in images" :kye="i")
     img(:src="image" class="scale-90 hover:scale-110 duration-500")

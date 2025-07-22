@@ -1,12 +1,11 @@
 <template lang="pug">
-hr(class="w-4/5 text-center text-gray-300 my-4 m-auto")
-div(class=" w-full  ")
- h1(class="text-black font-extrabold border-b-1  text-center m-auto px-2 mt-10 text-4xl w-1/2 pb-3 border-gray-400") Reviews  
-div(class="flex justify-around  gap-4 mt-4 mb-4")
+
+div(class="flex justify-around  gap-4 mt-5 mb-4")
  div
    p(class="text-start text-black font-bold pl-10 mt-5") All Reviews 
     span(class="text-gray-400") ({{ Coment.length }})  
-
+ div(class="flex flex-col items-center")
+  h1(class="text-black font-extrabold border-b-1  text-center  text-4xl  pb-3 border-gray-400") Reviews  
  div(class="gap-3")
   button(
     @click="setDirection('row')"

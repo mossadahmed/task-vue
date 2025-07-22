@@ -32,9 +32,9 @@ export const useCartProduct = defineStore('cart', () => {
  function updateQut(itemId: number, amount: number) {
   const product = cartItem.value.find((p) => p.id === itemId);
   if (product) {
-    const newQty = product.quantity + amount;
-    if (newQty > 0) {
-      product.quantity = newQty;
+    product.quantity += amount;
+    if (product.quantity <= 0){
+      removeFromCart(itemId);
     }
   }
 }
@@ -51,3 +51,4 @@ export const useCartProduct = defineStore('cart', () => {
     addToCart,
   };
 });
+

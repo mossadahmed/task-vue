@@ -6,32 +6,34 @@ div(v-if="cardStore.cartItem.length == 0")
      button(class="w-60 h-10 border rounded-4xl text-white bg-black hover:text-black hover:bg-white duration-500 mt-10") Back To Home 
 
 div(v-else) 
-  nav(class="text-start p-6 gap-3 ")
-   router-link(to="/") Home >
-   span(class="text-gray-400")  cart
-  button(@click="cardStore.clearCart([])" class="w-60 h-10 border rounded-4xl text-white bg-red-600 hover:text-red-400 hover:bg-white duration-500 mt-10" ) Clear Card
+  nav(class="text-start p-6 flex gap-3 ")
+   router-link(to="/" )
+    h1(class="text-gray-400 font-normal") Home >
+   span(class="text-black")  Cart
+  h1(class="text-4xl font-extrabold text-black text-start px-8 ") YOUR CART
   div(class="grid grid-cols-12 gap-5 p-5")
-    div(class="h-fit col-span-12 lg:col-span-6 border p-5 border-gray-400 shadow-xl rounded-3xl")
+    div(class="h-fit col-span-12 lg:col-span-7 border p-5 border-gray-400 shadow-xl rounded-3xl")
       div(v-for="item in cardStore.cartItem" :key="item.id" class="mb-5")
         div(class="flex justify-between items-start")
           div(class="flex gap-2")
-            img(:src="item.image" class="w-24 h-24 object-contain rounded-xl")
+            img(:src="item.image" class="w-fit h-36 object-contain rounded-xl")
             div(class="text-start text-sm text-gray-500")
               h1(class="font-bold text-black text-base mb-1") {{ item.title }}
               p Quantity: {{ item.quantity }}
               p Size: {{ item.size }}
               p(:style="{ color: item.color }") Color: {{ item.color }}
-              p(class="font-bold text-black mt-2") ${{ item.price }}
-          div(class="text-end") 
-            TrashIcon(
+              p(class=" font-normal text-black lg:mt-5 text-2xl") ${{ item.price }}
+          div(class=" flex flex-col h-36 justify-between items-end") 
+            div(class="flex gap-2")
+             TrashIcon(
               class="w-5 h-5 ml-16 text-red-500 cursor-pointer" @click="cardStore.removeFromCart(item.id)")
-            div(class="bg-gray-300 text-xl items-center text-black w-24 h-[50px] rounded-4xl flex justify-around mt-2")
-              button(@click="cardStore.updateQut(item.id, 1)" class="text-2xl") +
-              p {{ item.quantity }}
+            div(class="bg-gray-300 text-xl items-center text-black w-26 h-[35px] rounded-4xl flex justify-around mt-2")
               button(@click="cardStore.updateQut(item.id, -1)" class="text-2xl") −
+              p(class="textsm") {{ item.quantity }}
+              button(@click="cardStore.updateQut(item.id, 1)" class="text-2xl") +
         hr(class="text-gray-400 my-3 shadow-sm")  
 
-    div(class="col-span-12 lg:col-span-6 border h-fit p-5 border-gray-400 shadow-xl rounded-3xl")
+    div(class="col-span-12 lg:col-span-5 border h-fit p-5 border-gray-400 shadow-xl rounded-3xl")
       h1(class="text-start font-extrabold py-5 text-black text-4xl") Order Summary
       div(class="flex justify-between text-sm mb-3 text-start")
         div(class="text-gray-400")

@@ -15,16 +15,22 @@ div(v-else)
   div(class="grid grid-cols-12 gap-6")
     div(class="col-span-12 gap-3 lg:col-span-6 p-4 lg:flex flex-row-reverse")
       max
-       img(:src="selectedImage" data-aos="fad-up" data-aos-duration=1000  class=" w-full  m-auto  rounded-2xl shadow mb-4")
-      div(class="flex gap-3 lg:flex-col sm:w-1/2 md:w-1/2 flex-wrap mx-auto mb-5 ")
-        img(
-          v-for="(image, index) in product.images"
-          :key="index"
-          :src="image"
-          @click="selectedImage = image"
-          class="lg:w-60 object-cover mx-auto justify-center w-26 h-26 lg:h-40 rounded-2xl cursor-pointer border-2"
-          :class="image === selectedImage ? 'border-black' : 'border-transparent'"
-           )
+       img(
+        :src="selectedImage || product?.images[0]"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        v-if="selectedImage"
+        class="w-full m-auto rounded-2xl shadow mb-4"
+      )
+
+      div(class="flex gap-3 lg:flex-col sm:w-1/2 md:w-1/2 flex-wrap mx-auto mb-5")
+       img(
+        v-for="(image, index) in product.images"
+        :key="index"
+        :src="image"
+        @click="changeImage(image)"
+        class="lg:w-60 object-cover mx-auto justify-center w-26 h-26 lg:h-40 rounded-2xl cursor-pointer border-2"
+      )
     div(class="col-span-12 lg:col-span-6 p-7 text-start ")
      h1(class="font-extrabold text-4xl text-black") {{product.title}}
      div(class="text-lg flex items-center mt-2") 
@@ -60,9 +66,10 @@ div(v-else)
      div(class="flex flex-row-reverse justify-end  gap-3")
       button( @click="addTocart" class="bg-black text-white w-1/2 h-[50px] rounded-4xl") Add To Cart
       div(class="bg-gray-300 text-xl items-center text-black w-1/4 h-[50px] rounded-4xl flex justify-around")
+       button(@click="decreaseQty" class="text-2xl") -
+       p(class="text-2xl") {{quantity}}
        button(@click="increseQty" class="text-2xl") +
-       p {{quantity}}
-       button(@click="decreaseQty" class="text-4xl") -
+
      p(class="mt-8 text-start text-2xl font-black text-black  ") Total Price 
       span(class=" text-xl font-semibold text-gray-400") ( ${{allPric}} )    
   comenDetals 
@@ -80,7 +87,7 @@ const id = route.params.id;
 const router = useRouter();
 const { result, loading, error } = useQuery(GET_PRODUCT_BY_ID, { id });
 const product = computed(() => result.value?.product);
-const selectedImage = ref("");
+const selectedImage =  ref<string | null>(null);
 const selectedColor = ref("");
 const quantity = ref(1);
 const colors = ref(["red", "green", "black"]);
@@ -120,9 +127,33 @@ const filteredRoutes = computed(() => {
 });
 watch(product, (newProduct) => {
   if (newProduct?.images?.length) {
-    selectedImage.value = newProduct.images[0];
+    const saved = localStorage.getItem("selectedImage");
+
+    if (saved && newProduct.images.includes(saved)) {
+      selectedImage.value = saved;
+    } else {
+      selectedImage.value = newProduct.images[0];
+      localStorage.setItem("selectedImage", newProduct.images[0]);
+    }
   }
 });
+onMounted(() => {
+  if (product.value?.images?.length) {
+    const saved = localStorage.getItem(`selectedImage_${product.value.id}`);
+    if (saved && product.value.images.includes(saved)) {
+      selectedImage.value = saved;
+    } else {
+      selectedImage.value = product.value.images[0];
+      localStorage.setItem(`selectedImage_${product.value.id}`, product.value.images[0]);
+    }
+  }
+});
+
+function changeImage(img: string | null) {
+  selectedImage.value = img;
+  localStorage.setItem("selectedImage", img ?? "");
+}
+
 function Stare(id: number): number {
   return (id % 5) + 1;
 }
